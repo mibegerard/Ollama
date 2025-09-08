@@ -8,7 +8,7 @@ ENV OLLAMA_MAX_QUEUE=512
 
 # Pre-install the model
 # Start server in background to allow pull
-RUN ollama serve & sleep 5 && ollama pull codellama:7b
+RUN ollama serve & sleep 5 && ollama pull smollm2:135m
 
 # Expose the default Ollama port
 EXPOSE 11434
