@@ -11,8 +11,15 @@ services:
       OLLAMA_HOST: "http://0.0.0.0:11434"
       OLLAMA_MODELS: "/root/.ollama/models"
       OLLAMA_MAX_QUEUE: 512
+      OLLAMA_NOHISTORY: "true"
+      OLLAMA_NUM_PARALLEL: 2
     volumes:
       - ollama_models:/root/.ollama
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://127.0.0.1:11434/api/tags"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
 
 volumes:
   ollama_models:
